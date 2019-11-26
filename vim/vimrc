@@ -1,0 +1,14 @@
+set expandtab
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set laststatus=2
+" set autoindent
+
+
+
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+set background=dark

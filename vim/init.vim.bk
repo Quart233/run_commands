@@ -1,0 +1,94 @@
+" basic setting
+set expandtab
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" set smartindent
+"set laststatus=2
+set autoindent
+
+" colors settings
+" set cursorline
+" set list listchars=extends:>,precedes:<,tab:+\ ,trail:˽
+set list listchars=extends:>,precedes:<,tab:+\ ,trail:-
+
+
+
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+set background=dark
+
+" plugins
+call plug#begin('~/.config/nvim/plugged')
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/vim-easy-align'
+
+" emmet html css completion ------------------------------------------
+    Plug 'mattn/emmet-vim'
+
+" status bar ----------------------------------------------------------
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " let g:airline#extensions#tabline#enabled = 1
+    let g:airline_theme='simple'
+    " let g:airline#extensions#tabline#left_sep = '|'
+    " let g:airline#extensions#tabline#left_alt_sep = ' '
+    " let g:airline#extensions#tabline#formatter = 'unique_tail'
+    " set notermguicolors
+
+" ncm 2 language completion framwork --------------------------------------------
+"    " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+"    Plug 'ncm2/ncm2'
+"    Plug 'roxma/nvim-yarp'
+"
+"    " enable ncm2 for all buffers
+"    autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+"    " IMPORTANT: :help Ncm2PopupOpen for more information
+"    set completeopt=noinsert,menuone,noselect
+"
+"    " NOTE: you need to install completion sources to get completions. Check
+"    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+"    Plug 'ncm2/ncm2-bufword'
+"    Plug 'ncm2/ncm2-path'
+"
+"    " javascript completion
+"    Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+
+" indent lines ---------------------------------------------------------
+    Plug 'Yggdroot/indentLine'
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    " let g:indentLine_color_term = 239
+
+" code theme ----------------------------------------------------------
+    Plug 'connorholyday/vim-snazzy'
+
+" current word underline ---------------------------------------------
+    Plug 'itchyny/vim-cursorword'
+
+call plug#end()
+
+colorscheme snazzy
+" syntax enable
+" syntax on
+
+" set vue file syntax highlight ------------------------------------
+au BufNewFile,BufRead *.vue set filetype=html
+
+" autocmd FileType html set omnifunc=htmlcomplete#completeTags
+" autocmd FileType php set omnifunc=phpcomplete#completePHP
+" autocmd FileType css set omnifunc=csscomplete#completeCSS
+" autocmd FileType python set omnifunc=pythoncomplete#completePython
+" autocmd FileType html,javascript,css setl shiftwidth=2
+" autocmd FileType html,javascript,css setl tabstop=2
+" autocmd FileType html,javascript,css setl softtabstop=2
+
+" function! GetGitBranch()
+"     return system('echo -n $(git rev-parse --abbrev-ref HEAD 2>/dev/null)')
+" endfunction
+
+" set code folding -------------------------------------------------- 
+" 设置起止符号
+" syn region myFold start="{" end="}" transparent fold
+" syn sync fromstart "
