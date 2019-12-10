@@ -1,0 +1,30 @@
+version: '3'
+services:
+  nginx:
+    image: nginx 
+    ports:
+      - 80:80
+    links:
+      - pma
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/html:/etc/nginx/html:ro
+    command: ['nginx-debug', '-g', 'daemon off;']
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+  pma:
+    image: phpmyadmin/phpmyadmin:fpm
+    links:
+      - mariadb
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+      - PMA_ARBITRARY=1
