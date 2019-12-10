@@ -8,6 +8,7 @@ services:
       - pma
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/fastcgi.conf:/etc/nginx/fastcgi.conf:ro
       - ./nginx/html:/etc/nginx/html:ro
     command: ['nginx-debug', '-g', 'daemon off;']
 
@@ -27,4 +28,3 @@ services:
       - PMA_PORT=3306
       - PMA_USER=root
       - PMA_PASSWORD=root
-      - PMA_ARBITRARY=1
