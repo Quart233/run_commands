@@ -5,10 +5,17 @@ set softtabstop=4
 set shiftwidth=4
 set smartindent
 set laststatus=2
-" set autoindent
-
+set autoindent
 
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
+
+au BufNewFile,BufRead nginx.conf call s:nginx_conf()
+
+function! s:nginx_conf()
+  set tabstop=4
+  set softtabstop=4
+  set shiftwidth=4
+endfunction
