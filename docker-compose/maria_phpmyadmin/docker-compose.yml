@@ -4,12 +4,16 @@ services:
     image: mariadb
     volumes:
       - ./mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
   pma:
     image: phpmyadmin/phpmyadmin
     links:
       - mariadb
+    ports:
+      - 2333:80
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
