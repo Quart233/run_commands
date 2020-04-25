@@ -20,6 +20,7 @@ services:
       - redis
     volumes:
       - ./nextcloud:/var/www/html
+      - ./www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
     environment:
       - MYSQL_PASSWORD=kuaizi
       - MYSQL_DATABASE=nextcloud
@@ -33,6 +34,7 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
       - ./mariadb:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
     environment:
       - MYSQL_ROOT_PASSWORD=kuaizi
       - MYSQL_PASSWORD=kuaizi
