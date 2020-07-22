@@ -30,6 +30,9 @@ services:
       - MYSQL_HOST=mariadb
       - REDIS_HOST=redis
     restart: always
+    depends_on:
+      - mariadb
+      - redis
 
   mariadb:
     image: mariadb
@@ -47,3 +50,13 @@ services:
   redis:
     image: redis
     restart: always
+
+  cron:
+    image: nextcloud:image-preview
+    volumes:
+      - ./nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    restart: always
+    depends_on:
+      - mariadb
+      - redis
