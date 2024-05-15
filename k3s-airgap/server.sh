@@ -5,6 +5,12 @@ read PUBLIC_IP
 echo "NodeIP:"
 read NODE_IP
 
+# Copy files
+mkdir -p /var/lib/rancher/k3s/agent/images
+cp k3s-airgap-images-amd64.tar.zst /var/lib/rancher/k3s/agent/images
+cp k3s /usr/local/bin/k3s
+chmod a+x /usr/local/bin/k3s
+
 export K3S_TOKEN=$(pwgen 25 1)
 export INSTALL_K3S_SKIP_DOWNLOAD=true
 
