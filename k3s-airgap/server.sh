@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p "External IP: " EXTERNALIP
 read -p "Node IP: " NODEIP
-read -P "Cluster Init (yes/no): " answer
+read -p "Cluster Init (yes/no): " answer
 
 export K3S_TOKEN=$(pwgen 25 1)
 export INSTALL_K3S_SKIP_DOWNLOAD=true
