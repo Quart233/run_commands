@@ -37,4 +37,4 @@ else
     exit 0;
 fi
 
-echo "K3S_TOKEN: $K3S_TOEKN"
+echo "K3S_TOKEN: $K3S_TOKEN"
