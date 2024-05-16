@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "Listen Port:"
-read LISTEN_PORT
+read -p "Listen Port: " LISTEN_PORT
+read -p "Porfile Name: " PROFILE_NAME
 
 umask 077
 PRIVATE=$(wg genkey)
 echo $PRIVATE | tee $(hostname).key | wg pubkey > $(hostname).pub
 
-echo <<'EOF'
+cat << EOF | tee $PROFILE_NAME
 [Interface]
 PrivateKey = $PRIVATE
 Address = 10.10.11.1
