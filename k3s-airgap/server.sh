@@ -7,6 +7,7 @@ export K3S_TOKEN=$(pwgen 25 1 | tee token)
 export INSTALL_K3S_SKIP_DOWNLOAD=true
 
 # Copy files
+echo "Copying Files..."
 mkdir -p /var/lib/rancher/k3s/agent/images
 cp k3s-airgap-images-amd64.tar.zst /var/lib/rancher/k3s/agent/images
 cp k3s /usr/local/bin/k3s
