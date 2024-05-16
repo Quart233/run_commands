@@ -6,7 +6,7 @@ read -p "Endpoint IP: " ENDIP
 read -p "Static IP: " SITEIP
 read -p "Porfile: " PROFILE_NAME
 
-cat << EOF | tee $PROFILE_NAME
+cat << EOF | tee -a $PROFILE_NAME
 [Peer]
 # $NAME
 PublicKey = $PUBKEY
