@@ -12,4 +12,5 @@ cat << EOF | tee -a $PROFILE_NAME
 PublicKey = $PUBKEY
 AllowedIPs = $SITEIP
 Endpoint = $ENDIP:51820
+
 EOF

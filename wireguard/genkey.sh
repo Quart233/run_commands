@@ -13,4 +13,5 @@ cat << EOF | tee $PROFILE_NAME
 PrivateKey = $PRIVATE
 Address = $SITEIP
 ListenPort = $LISTEN_PORT
+
 EOF
