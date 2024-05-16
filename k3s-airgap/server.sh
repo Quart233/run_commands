@@ -28,7 +28,7 @@ elif [ "$answer" = "no" ]; then
     read -p "Token: " K3S_TOKEN
     export K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
-        --server=$SERVER\
+        --server=https://$SERVER:6443 \
         --flannel-backend=wireguard-native \
         --flannel-iface=wg0 \
         --node-ip=$NODEIP \
