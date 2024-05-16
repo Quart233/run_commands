@@ -16,7 +16,7 @@ if [ "$answer" = "yes" ]; then
     export K3S_TOKEN=$(pwgen 25 1 | tee token)
     curl -sfL https://get.k3s.io | sh -s - server \
         --cluster-init \
-        --flannel-backend=wireguard-native \
+        --flannel-backend=vxlan \
         --flannel-iface=wg0 \
         --node-ip=$NODEIP \
         --advertise-address=$NODEIP \
@@ -27,7 +27,7 @@ elif [ "$answer" = "no" ]; then
     read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
     read -p "Token: " K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
-        --flannel-backend=wireguard-native \
+        --flannel-backend=vxlan \
         --flannel-iface=wg0 \
         --node-ip=$NODEIP \
         --advertise-address=$NODEIP \
