@@ -3,7 +3,7 @@ read -p "External IP: " EXTERNALIP
 read -p "Node IP: " NODEIP
 read -p "Cluster Init (yes/no): " answer
 
-export K3S_TOKEN=$(pwgen 25 1)
+export K3S_TOKEN=$(pwgen 25 1 | tee token)
 export INSTALL_K3S_SKIP_DOWNLOAD=true
 
 # Copy files
@@ -36,4 +36,4 @@ else
     exit 0;
 fi
 
-echo "K3S_TOKEN: $(tee token < $K3S_TOKEN)"
+echo "K3S_TOKEN: $K3S_TOEKN"
