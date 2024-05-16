@@ -24,11 +24,9 @@ if [ "$answer" = "yes" ]; then
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
     echo "K3S_TOKEN: $K3S_TOKEN"
 elif [ "$answer" = "no" ]; then
-    read -p "Server (Register IP): " REGISTERIP
+    read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
     read -p "Token: " K3S_TOKEN
-    export K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
-        --server=https://$REGISTERIP:6443 \
         --flannel-backend=wireguard-native \
         --flannel-iface=wg0 \
         --node-ip=$NODEIP \
@@ -39,4 +37,3 @@ else
     echo "Invalid input. Please enter 'yes' or 'no'."
     exit 0;
 fi
-
