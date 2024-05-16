@@ -20,4 +20,4 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --node-external-ip=$EXTERNALIP \
     --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
-echo "K3S_TOKEN: $K3S_TOKEN"
+echo "K3S_TOKEN: $(tee token < $K3S_TOKEN)"
