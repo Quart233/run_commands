@@ -13,7 +13,6 @@ cp k3s /usr/local/bin/k3s
 chmod a+x /usr/local/bin/k3s
 
 if [ "$answer" = "yes" ]; then
-    read -p "Server (External IP): " SERVER
     curl -sfL https://get.k3s.io | sh -s - server \
         --cluster-init \
         --flannel-backend=wireguard-native \
@@ -23,6 +22,7 @@ if [ "$answer" = "yes" ]; then
         --node-external-ip=$EXTERNALIP \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 elif [ "$answer" = "no" ]; then
+    read -p "Server (External IP): " SERVER
     curl -sfL https://get.k3s.io | sh -s - server \
         --server=$SERVER\
         --flannel-backend=wireguard-native \
