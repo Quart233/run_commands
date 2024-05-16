@@ -1,9 +1,6 @@
 #!/bin/bash
-echo "PublicIP:"
-read PUBLIC_IP
-
-echo "NodeIP:"
-read NODE_IP
+read -p "External IP: " EXTERNALIP
+read -p "Node IP: " NODEIP
 
 # Copy files
 mkdir -p /var/lib/rancher/k3s/agent/images
@@ -18,9 +15,9 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --cluster-init \
     --flannel-backend=wireguard-native \
     --flannel-iface=wg0 \
-    --node-ip=$NODE_IP \
-    --advertise-address=$NODE_IP \
-    --node-external-ip=$PUBLIC_IP \
-    --tls-san=$PUBLIC_IP # Optional, needed if using a fixed registration address
+    --node-ip=$NODEIP \
+    --advertise-address=$NODEIP \
+    --node-external-ip=$EXTERNALIP \
+    --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
 echo "K3S_TOKEN: $K3S_TOKEN"
