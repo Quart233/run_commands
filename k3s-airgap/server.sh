@@ -3,7 +3,6 @@ read -p "External IP: " EXTERNALIP
 read -p "Node IP: " NODEIP
 read -p "Cluster Init (yes/no): " answer
 
-export K3S_TOKEN=$(pwgen 25 1 | tee token)
 export INSTALL_K3S_SKIP_DOWNLOAD=true
 
 # Copy files
@@ -14,6 +13,7 @@ cp k3s /usr/local/bin/k3s
 chmod a+x /usr/local/bin/k3s
 
 if [ "$answer" = "yes" ]; then
+    export K3S_TOKEN=$(pwgen 25 1 | tee token)
     curl -sfL https://get.k3s.io | sh -s - server \
         --cluster-init \
         --flannel-backend=wireguard-native \
@@ -22,6 +22,7 @@ if [ "$answer" = "yes" ]; then
         --advertise-address=$NODEIP \
         --node-external-ip=$EXTERNALIP \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
+    echo "K3S_TOKEN: $K3S_TOKEN"
 elif [ "$answer" = "no" ]; then
     read -p "Server (External IP): " SERVER
     curl -sfL https://get.k3s.io | sh -s - server \
@@ -37,4 +38,3 @@ else
     exit 0;
 fi
 
-echo "K3S_TOKEN: $K3S_TOKEN"
