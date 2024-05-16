@@ -25,6 +25,8 @@ if [ "$answer" = "yes" ]; then
     echo "K3S_TOKEN: $K3S_TOKEN"
 elif [ "$answer" = "no" ]; then
     read -p "Server (External IP): " SERVER
+    read -p "Token: " K3S_TOKEN
+    export K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
         --server=$SERVER\
         --flannel-backend=wireguard-native \
