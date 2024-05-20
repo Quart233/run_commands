@@ -2,13 +2,13 @@
 
 read -p "Listen Port: " LISTEN_PORT
 read -p "Static IP: " SITEIP
-read -p "Porfile Name: " PROFILE_NAME
+read -p "Porfile Name: " PROFILE
 
 umask 077
 PRIVATE=$(wg genkey)
-echo $PRIVATE | tee $(hostname).key | wg pubkey > $(hostname).pub
+echo $PRIVATE | tee $PROFILE.key | wg pubkey > $PROFILE.pub
 
-cat << EOF | tee $PROFILE_NAME
+cat << EOF | tee $PROFILE
 [Interface]
 PrivateKey = $PRIVATE
 Address = $SITEIP
