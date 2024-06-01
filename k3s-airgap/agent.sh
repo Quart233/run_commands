@@ -1,5 +1,4 @@
 #!/bin/bash
-read -p "External IP: " EXTERNALIP
 read -p "Node IP: " NODEIP
 read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
 read -p "Token: " K3S_TOKEN
@@ -17,5 +16,4 @@ chmod a+x /usr/local/bin/k3s
 
 curl -sfL https://get.k3s.io | sh -s - agent \
     --flannel-iface=wg0 \
-    --node-ip=$NODEIP \
-    --node-external-ip=$EXTERNALIP
+    --node-ip=$NODEIP
