@@ -19,6 +19,7 @@ if [ "$answer" = "yes" ]; then
         --flannel-backend=host-gw \
         --flannel-iface=wg0 \
         --advertise-address=$NODEIP \
+        --egress-selector-mode=disabled \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
     echo "K3S_TOKEN: $K3S_TOKEN"
@@ -31,6 +32,7 @@ elif [ "$answer" = "no" ]; then
         --flannel-backend=host-gw \
         --flannel-iface=wg0 \
         --advertise-address=$NODEIP \
+        --egress-selector-mode=disabled \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 else
     echo "Invalid input. Please enter 'yes' or 'no'."

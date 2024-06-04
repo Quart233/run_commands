@@ -15,5 +15,6 @@ cp k3s /usr/local/bin/k3s
 chmod a+x /usr/local/bin/k3s
 
 curl -sfL https://get.k3s.io | sh -s - agent \
+    --disable-apiserver-lb \
     --flannel-iface=wg0 \
     --node-ip=$NODEIP
