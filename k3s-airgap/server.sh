@@ -16,7 +16,6 @@ if [ "$answer" = "yes" ]; then
     export K3S_TOKEN=$(pwgen 25 1 | tee token)
     curl -sfL https://get.k3s.io | sh -s - server \
         --cluster-init \
-        --flannel-backend=host-gw \
         --flannel-iface=wg0 \
         --advertise-address=$NODEIP \
         --egress-selector-mode=disabled \
@@ -29,7 +28,6 @@ elif [ "$answer" = "no" ]; then
     export K3S_URL
     export K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
-        --flannel-backend=host-gw \
         --flannel-iface=wg0 \
         --advertise-address=$NODEIP \
         --egress-selector-mode=disabled \
