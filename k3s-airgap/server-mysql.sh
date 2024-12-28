@@ -27,7 +27,6 @@ elif [ "$answer" = "no" ]; then
     curl -sfL https://get.k3s.io | sh -s - server \
         --advertise-address=$NODEIP \
         --egress-selector-mode=disabled \
-        --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 else
     echo "Invalid input. Please enter 'yes' or 'no'."
     exit 0;
