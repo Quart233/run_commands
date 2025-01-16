@@ -4,6 +4,7 @@ read -p "Init (yes/no): " answer
 export INSTALL_K3S_SKIP_DOWNLOAD=true
 
 read -p "Node IP: " NODEIP
+read -p "External IP: " EXTERNALIP
 read -p "DB_HOSTNAME: " DB_HOSTNAME
 read -p "DB_USERNAME: " DB_USERNAME
 read -p "DB_PASSWORD: " DB_PASSWORD
@@ -16,7 +17,6 @@ cp k3s /usr/local/bin/k3s
 chmod a+x /usr/local/bin/k3s
 
 if [ "$answer" = "yes" ]; then
-    read -p "External IP: " EXTERNALIP
     curl -sfL https://get.k3s.io | sh -s - server \
         --token=$(pwgen 25 1 | tee secret) \
         --datastore-endpoint="mysql://$DB_USERNAME:$DB_PASSWORD@tcp($DB_HOSTNAME:3306)/k3s" \
