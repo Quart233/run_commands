@@ -12,7 +12,6 @@ cp k3s /usr/local/bin/k3s
 chmod a+x /usr/local/bin/k3s
 
 if [ "$answer" = "yes" ]; then
-    export K3S_TOKEN=$(pwgen 25 1 | tee token)
     curl -sfL https://get.k3s.io | sh -s - server \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
