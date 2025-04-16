@@ -14,16 +14,12 @@ chmod a+x /usr/local/bin/k3s
 if [ "$answer" = "yes" ]; then
     export K3S_TOKEN=$(pwgen 25 1 | tee token)
     curl -sfL https://get.k3s.io | sh -s - server \
-        --token=$(pwgen 25 1 | tee secret) \
-        --flannel-backend=vxlan \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
 elif [ "$answer" = "no" ]; then
     read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
     read -p "Token: " K3S_TOKEN
     curl -sfL https://get.k3s.io | sh -s - server \
-        --token=$K3S_TOKEN \
-        --flannel-backend=vxlan \
 else
     echo "Invalid input. Please enter 'yes' or 'no'."
     exit 0;
