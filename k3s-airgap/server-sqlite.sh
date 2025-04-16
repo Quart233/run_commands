@@ -18,7 +18,7 @@ if [ "$answer" = "yes" ]; then
 elif [ "$answer" = "no" ]; then
     read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
     read -p "Token: " K3S_TOKEN
-    curl -sfL https://get.k3s.io | sh -s - server \
+    curl -sfL https://get.k3s.io | sh -s - agent \
 else
     echo "Invalid input. Please enter 'yes' or 'no'."
     exit 0;
