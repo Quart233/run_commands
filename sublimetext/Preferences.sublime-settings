@@ -1,0 +1,42 @@
+{
+    "ignored_packages": [
+    ],
+
+    // ui
+    "ui_scale": 1.5,
+    "bold_folder_labels": true,
+    "sidebar_on_right": true,
+
+    // editor
+    "popup_shadows": false,
+
+    // tas
+    "file_tab_style":"square",
+
+    // status bar
+    "show_encoding": true,
+
+    // fonts
+    "font_size": 12,
+    "font_face": "JetBrains Mono",
+
+    // line
+    "word_wrap": false,
+    "highlight_line": true,
+    "line_padding_top": 1,
+    "line_padding_bottom": 1,
+
+    // vintage mode
+    "vintage_ctrl_keys": true,
+    "relative_line_numbers": true,
+    "vintage_start_in_command_mode": true,
+
+    // save behavior
+    "save_on_focus_lost": true,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+
+    "index_files": true,
+    "theme": "Adaptive.sublime-theme",
+    "color_scheme": "Packages/Aura Theme Color Scheme/aura-theme.tmTheme",
+}

@@ -1,0 +1,17 @@
+{
+    "bootstrapped": true,
+    "installed_packages":
+    [
+        "A File Icon",
+        "Debugger",
+        "LSP",
+        "LSP-Deno",
+        "Package Control",
+        "SublimeLinter",
+    ],
+    "in_process_packages":
+    [
+    ],
+    "http_proxy": "http://127.0.0.1:2080",
+    "https_proxy": "http://127.0.0.1:2080",
+}
