@@ -1,9 +1,20 @@
 [
+    // Rename
+    {
+        "keys": ["f2"],
+        "command": "lsp_symbol_rename",
+        "context": [{"key": "lsp.session_with_capability", "operand": "renameProvider"}]
+    },
     // Goto Diagnostic
     {
         "keys": ["f8"],
         "command": "lsp_goto_diagnostic",
         "args": {"uri": "$view_uri"}
+    },
+    // Goto Diagnostic in Project
+    {
+        "keys": ["shift+f8"],
+        "command": "lsp_goto_diagnostic"
     },
     // Goto Definition
     {
@@ -17,8 +28,16 @@
     },
     // Hover Popup
     {
-        "keys": [","],
+        "keys": ["super+,"],
         "command": "lsp_hover",
         "context": [{"key": "lsp.session_with_capability", "operand": "hoverProvider"}]
     },
+    // Document Symbols (a replacement for ST's "Goto Symbol")
+    {
+        "keys": ["primary+r"],
+        "command": "lsp_document_symbols",
+        "context": [{"key": "lsp.session_with_capability", "operand": "documentSymbolProvider"}]
+    },
+    // Toggle siebar
+    { "keys": ["super+;"], "command": "toggle_side_bar" }
 ]
