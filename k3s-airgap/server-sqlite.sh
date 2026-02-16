@@ -13,14 +13,15 @@ chmod a+x /usr/local/bin/k3s
 
 if [ "$answer" = "yes" ]; then
     curl -sfL https://get.k3s.io | sh -s - server \
+        --flannel-backend=host-gw \
         --tls-san=$EXTERNALIP # Optional, needed if using a fixed registration address
 
 elif [ "$answer" = "no" ]; then
-    read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL 
+    read -p "K3S_URL (https://<register-ip>:6443): " K3S_URL
     read -p "Token: " K3S_TOKEN
-    curl -sfL https://get.k3s.io | sh -s - agent \
-        --server=$K3S_URL \
-        --token=$K3S_TOKEN
+    curl -sfL https://get.k3s.io | sh -s - server \
+        --token=$K3S_TOKEN \
+        --flannel-backend=host-gw
 else
     echo "Invalid input. Please enter 'yes' or 'no'."
     exit 0;
